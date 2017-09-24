@@ -32,36 +32,21 @@
 			// results from querry will be looped
 
 			if(mysqli_num_rows($query==1)){
-				if(isset($_REQUEST['email'] == '$email' && $_REQUEST['password'] == '$password')){
+				 
 				
 					foreach($query->result_array() as $row){
 						$client_id = $row["client_id"];
-						$fname = $row["fname"];
-						$lname = $row["lname"];
-						$email = $row["email"];
-						$address = $row["address"];
-						$contact = $row["contact"];					
+						$fname = $row["fname"];			
 						echo "Welcome";
-					}
-				}
+					}		 
+				
+				$_SESSION['message'] = "Successfully Logged in!";
 
-				else{
-					echo "Record not found!";
-				}
 			}
 			
 			else{
-				echo "Error";
+				$_SESSION['message'] = "Email or password doesn't match!";
 			}
-
-			
-
-
-
-		$data = fetchAll();
-		return ($data);  
-		
-
 		}
 
 		
