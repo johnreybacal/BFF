@@ -42,24 +42,7 @@
 </tbody>
 </table>
 <hr />
-<h3>Step 2: Location</h3>
-<form method = "POST">
-  <input type = "radio" name = "address" />Deliver to my address<br />
-  <input type = "radio" name = "address" />I'll pick it up myself<br />
-  <input type = "radio" name = "address" />Deliver to a different address:
-  <input type = "text" name = "diffAddress" />
-  <hr />
-  <h3>Step 3: Payment</h3>
-  <div id = "lol">
-  <h5>Your bill is: <strong><?php echo $this->cart->total(); ?> Pesos</strong></h5>
-  <h5>Your reference code will be: <?php echo md5(str_shuffle('0001'.$this->cart->total_items().$this->cart->total())) ?></h5>
-  </div>
-  <input type = "radio" name = "payment" />Cash on delivery/pickup<br />  
-  <input type = "radio" name = "payment" />Credit/Debit card:<br />
-  PIN: <input type = "text" name = "cardDetails" /><br />
-  <hr />
-  <input type = "submit" value = "Finish Transaction" />
-</form>
+<a href = "<?php echo base_url('BFF/Transaction/step_2'); ?>">Checkout cart</a>
 </center>
 <script>
   $('.addToCart').click(function(){    
@@ -74,14 +57,7 @@
           alert(quantity + " " + name + "(s) added to cart");
           $('#cart').html(data);
         }
-      });      
-      $.ajax({
-        url: "<?php echo base_url('BFF/getRefCode/'); ?>",
-        success: function(data){
-          $('#lol').html(data);
-        }
       });
-
     }else{
       alert("Invalid quantity");
     }    
