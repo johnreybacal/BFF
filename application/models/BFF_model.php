@@ -1,6 +1,10 @@
 <?php
 	class BFF_model extends CI_Model{
 
+		public function __construct(){
+			parent::__construct();
+		}
+		
 		public function dummyData(){
 			$data = array(
 				array('id' => '0001', 'name' => 'Sunflower', 'price' => 50),
@@ -9,6 +13,5 @@
 			);
 			return $data;
 		}
-
 	}
 ?>
