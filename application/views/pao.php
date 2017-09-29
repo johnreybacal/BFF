@@ -21,7 +21,7 @@
 </table>
 <hr />
 <h4>Your Cart</h4>
-<a href = "<?php echo base_url('BFF/emptyCart/'); ?>">Empty cart</a>
+<a href = "<?php echo base_url('emptyCart/'); ?>">Empty cart</a>
 <table id = "cart" cellpadding="6" cellspacing="1" border="solid thin black">
 <thead>
   <tr><th>id</th><th>name</th><th>price</th><th>quantity</th><th>total price</th><th>Action</th></tr>
@@ -35,14 +35,15 @@
     <td><?php echo $items['qty'] ?></td>
     <td><?php echo $items['price'] * $items['qty'] ?></td>
     <td>
-      <a href = "<?php echo base_url('BFF/removeFromCart/'.$items['rowid']); ?>">Remove from cart</a>
+      <a href = "<?php echo base_url('removeFromCart/'.$items['rowid']); ?>">Remove from cart</a>
     </td>
   </tr>
 <?php endforeach; ?>
+  <tr><td>Total</td><td><?php echo $this->cart->total(); ?></td></tr>
 </tbody>
 </table>
 <hr />
-<a href = "<?php echo base_url('BFF/Transaction/step_2'); ?>">Checkout cart</a>
+<a href = "<?php echo base_url('Transaction/step_2'); ?>">Checkout cart</a>
 </center>
 <script>
   $('.addToCart').click(function(){    
