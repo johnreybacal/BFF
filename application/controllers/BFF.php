@@ -6,14 +6,11 @@ class BFF extends CI_Controller {
 	public function __construct(){
 		parent::__construct();		
 		$this->load->model('BFF_model', 'bff');
-		$this->load->model('User_model', 'user');
-		$this->load->helper('url');
-		$this->load->library('cart');	
-		$this->load->library('session');
+		$this->load->model('User_model', 'user');		
 	}
 
 	public function index(){
-		redirect(base_url('BFF/Home/'));
+		redirect(base_url('Home/'));
 	}
 
 	public function Home(){	
@@ -103,10 +100,9 @@ class BFF extends CI_Controller {
 			case 'step_2.2':
 				$this->load->view('transaction/step2.2.php');
 				break;
-			case 'step_3':
-				$ship = $_SESSION['sf'];
-				$data['ship'] = $ship;
-				$data['bill'] = $this->cart->total() + $ship;
+			case 'step_3':				
+				$data['ship'] = $_SESSION['sf'];
+				$data['bill'] = $this->cart->total();
 				$this->load->view('transaction/step3.php', $data);
 				break;
 		}
@@ -117,7 +113,7 @@ class BFF extends CI_Controller {
 		$data = array('id' => $id, 'qty' => $qty, 'price' => $price, 'name' => $name);
 		$this->cart->insert($data);
 		echo $this->displayCart();
-		// redirect(base_url('BFF/Order/'));
+		// redirect(base_url('Order/'));
 	}
 
 	public function displayCart(){
@@ -135,48 +131,45 @@ class BFF extends CI_Controller {
 		    <td>'.$items['qty'].'</td>
 		    <td>'.$items['price'] * $items['qty'].'</td>
 		    <td>
-		      <a href = "'.base_url('BFF/removeFromCart/'.$items['rowid']).'">Remove from cart</a>
+		      <a href = "'.base_url('removeFromCart/'.$items['rowid']).'">Remove from cart</a>
 		    </td>
 		  </tr>';
 		}
+		$str .= '<tr><td>Total</td><td>'.$this->cart->total().'</td></tr>';
 		return $str.'</tbody>';
 	}
 
 	public function removeFromCart($rowid){		
 		$this->cart->remove($rowid);
-		redirect(base_url('BFF/Order/'));
+		redirect(base_url('Order/'));
 	}
 
 	public function emptyCart(){
 		$this->cart->destroy();
-		redirect(base_url('BFF/Order/'));
+		redirect(base_url('Order/'));
 	}
 
 	public function transact_loc(){
 		$choice = $this->input->post('address');		
 		if($choice == 2){//Deliver to a different address
-			redirect(base_url('BFF/Transaction/step_2.2'));
+			redirect(base_url('Transaction/step_2.2'));
 		}else{
 			if($choice == 0){//Deliver to my address
 				//kunin sa db location ni client
-				//dummy client whose address is in Manila
-				// $this->bff->setSF(200);
-				$this->session->set_userdata('sf', 200);
-				$this->bff->setAddress('TUP Manila');
+				//dummy client whose address is in Manila				
+				$this->session->set_userdata('sf', 200);				
 			}else{//I'll pick it up myself
 				$this->session->set_userdata('sf', 0);
 			}
-			redirect(base_url('BFF/Transaction/step_3'));
+			redirect(base_url('Transaction/step_3'));
 		}		
 	}
 
 	public function transact_exloc(){
-		$ship = $this->input->post('ship_address');
-		// $this->bff->setSF($ship);
+		$ship = $this->input->post('ship_address');		
 		$this->session->set_userdata('sf', 200);		
-		$loc = $this->input->post('exact_address');
-		$this->bff->setAddress($loc);		
-		redirect(base_url('BFF/Transaction/step_3'));
+		$loc = $this->input->post('exact_address');		
+		redirect(base_url('Transaction/step_3'));
 	}
 
 	public function transact_pay(){
