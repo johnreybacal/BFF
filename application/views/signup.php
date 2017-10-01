@@ -1,5 +1,5 @@
 <div class="container">
-  <form class="form-signin" method = "POST" action = "<?php echo base_url('BFF/Signup/'); ?>">
+  <form class="form-signin" method = "POST" action = "<?php echo base_url('signup'); ?>">
     <h4 class="form-signin-heading"><strong>Brighten Flowers & Fruits</strong> <br/><br/>Sign up</h4>
     <label for="inputFirst" class="sr-only">First name</label>
     <input type="text" id="inputEmail" name = "fname" class="form-control" placeholder="First name" required autofocus>
@@ -8,7 +8,7 @@
     <input type="text" id="inputEmail" name = "lname" class="form-control" placeholder="Last name" required>
   
     <label for="inputLast" class="sr-only">Address</label>
-    <input type="text" id="inputAddress" name = "addr" class="form-control" placeholder="Address" required>
+    <input type="text" id="inputAddress" name = "address" class="form-control" placeholder="Address" required>
 
     <label for="inputEmail" class="sr-only">Email address</label>
     <input type="email" id="inputEmail" name = "email" class="form-control" placeholder="Email address" required>
