@@ -11,7 +11,7 @@
         <div class="carousel-caption d-none d-md-block text-left">
           <h2>Get your fresh flower!</h2>
           <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-          <p><a class="btn btn-lg btn-primary" href="<?php echo base_url('BFF/Signup'); ?>" role="button">Sign up today</a></p>
+          <p><a class="btn btn-lg btn-primary" href="<?php echo base_url('Signup'); ?>" role="button">Sign up today</a></p>
         </div>
       </div>
     </div>
@@ -21,7 +21,7 @@
         <div class="carousel-caption d-none d-md-block">
           <h2>Another example headline.</h2>
           <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-          <p><a class="btn btn-lg btn-primary" href="<?php echo base_url('BFF/Album'); ?>" role="button">Learn more</a></p>
+          <p><a class="btn btn-lg btn-primary" href="<?php echo base_url('Album'); ?>" role="button">Learn more</a></p>
         </div>
       </div>
     </div>
@@ -31,7 +31,7 @@
         <div class="carousel-caption d-none d-md-block text-right">
           <h2>Featured Products</h2>
           <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-          <p><a class="btn btn-lg btn-primary" href="<?php echo base_url('BFF/Album'); ?>" role="button">Browse gallery</a></p>
+          <p><a class="btn btn-lg btn-primary" href="<?php echo base_url('Album'); ?>" role="button">Browse gallery</a></p>
         </div>
       </div>
     </div>
