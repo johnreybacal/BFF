@@ -167,7 +167,7 @@ class BFF extends CI_Controller {
 
 	public function transact_exloc(){
 		$ship = $this->input->post('ship_address');		
-		$this->session->set_userdata('sf', 200);		
+		$this->session->set_userdata('sf', $ship);		
 		$loc = $this->input->post('exact_address');		
 		redirect(base_url('Transaction/step_3'));
 	}
@@ -178,6 +178,11 @@ class BFF extends CI_Controller {
 		if($choice == 1){
 			$card = $this->input->post('card-details');
 		}
+	}
+
+	public function finishOrder(){
+		$this->bff->saveOrder($this->bff->generateID('order_id', 'orders'));
+		echo "Thank you for ordering!";
 	}
 
 }
