@@ -45,7 +45,7 @@
 			$str = substr($str, 0, strlen($str));
 			$str .= '}';
 			$order_id = $this->generateID('order_id', 'orders');
-			$this->db->query("INSERT INTO orders (order_id, client_id, cart, date, total_bill) VALUES ('".$order_id."', '0001', '".$str."', '".date("Y/m/d")."', '".($this->cart->total() + $_SESSION['sf'])."')");
+			$this->db->query("INSERT INTO orders (order_id, client_id, cart, date, total_bill) VALUES ('".$order_id."', '".$this->session->userdata('client_id')."', '".$str."', '".date("Y/m/d")."', '".($this->cart->total() + $_SESSION['sf'])."')");
 		}
 		
 	}

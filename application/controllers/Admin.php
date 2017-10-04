@@ -19,6 +19,7 @@ class Admin extends CI_Controller {
 	}
 
 	public function Clients(){
+		// $this->load->view('Admin/includes/header');
 		$this->load->view('Admin/clients');
 	}
 

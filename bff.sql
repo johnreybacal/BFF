@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 03, 2017 at 04:28 AM
+-- Generation Time: Oct 04, 2017 at 05:55 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -19,6 +19,35 @@ SET time_zone = "+00:00";
 --
 -- Database: `bff`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `clients`
+--
+
+CREATE TABLE IF NOT EXISTS `clients` (
+  `client_id` varchar(4) NOT NULL,
+  `fname` varchar(20) NOT NULL,
+  `mname` varchar(20) NOT NULL,
+  `lname` varchar(20) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `city` varchar(20) NOT NULL,
+  `street` varchar(20) NOT NULL,
+  `brgy` varchar(20) NOT NULL,
+  `contact` int(20) NOT NULL,
+  `password` varchar(30) NOT NULL,
+  PRIMARY KEY (`client_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `clients`
+--
+
+INSERT INTO `clients` (`client_id`, `fname`, `mname`, `lname`, `email`, `city`, `street`, `brgy`, `contact`, `password`) VALUES
+('0001', 'Johnrey', 'Cumayas', 'Bacal', 'johnrey.bacal@yahoo.com', 'Pasay', 'Gideon', '90', 2147483647, '12345'),
+('0002', 'Lore Jane', 'Tamargo', 'Reyes', 'lorereyes@yahoo.com', 'Pasay', 'Merville', 'Somewhere', 2147483647, '123'),
+('0003', 'Christian', 'Manalo', 'Tuvieron', 'ct@yahoo.com', 'Alabang', 'Star Mall', 'Somewhere', 2147483647, '321');
 
 -- --------------------------------------------------------
 
