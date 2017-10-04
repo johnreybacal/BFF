@@ -59,28 +59,35 @@ class BFF extends CI_Controller {
 		$this->load->view('includes/footer.php');
 	}
 
-	public function Signup(){
-		// tovs uncomment mo lng to
-		// C for Create
-		// function sa model: login($fname, $lname, $addr, $contact, $email, $password)
-		// if($this->input->post('submit')){
-		// 	$this->user->signup($this->input->post('fname'), $this->input->post('lname'), $this->input->post('addr'), $this->input->post('contact'), $this->input->post('email'), $this->input->post('password'));
-		// }
+	public function Signup(){		
 		$this->load->view('includes/headerWithoutNav.php');
 		$this->load->view('signup');
 		$this->load->view('includes/footer.php');
 	}
 
-	public function Login(){
-		// tovs uncomment mo lng to
-		// R for Read
-		// function sa model: login($email, $password)
-		// if($this->input->post('submit')){
-		// 	$this->user->login($this->input->post('email'), $this->input->post('password'));
-		// }
+	public function signupAction(){		
+		if($this->user->Signup($this->bff->generateID('client_id', 'clients'),$this->input->post('fname'),$this->input->post('mname'),$this->input->post('lname'),$this->input->post('email'),$this->input->post('city'),$this->input->post('strt'),$this->input->post('brgy'),$this->input->post('contact'),$this->input->post('password'))){
+			$this->session->set_userdata($this->user->Login($this->input->post('email'), $this->input->post('password')));
+			redirect(base_url('Home'));
+		}else{
+			echo "whoops";
+		}	
+	}
+
+	public function Login(){		
 		$this->load->view('includes/headerWithoutNav.php');
 		$this->load->view('login');
 		$this->load->view('includes/footer.php');
+	}
+
+	public function loginAction(){
+		$var = $this->user->Login($this->input->post('email'), $this->input->post('password'));
+		if(is_array($var)){
+			$this->session->set_userdata($var);
+			redirect(base_url('Home'));
+		}else{
+			echo "Invalid username or password";
+		}
 	}
 
 	public function Privacy(){

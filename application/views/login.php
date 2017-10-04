@@ -1,5 +1,5 @@
 <div class="container">
-  <form class="form-signin" method = "POST" action = "<?php echo base_url('BFF/Login/'); ?>">
+  <form class="form-signin" method = "POST" action = "<?php echo base_url('BFF/loginAction/'); ?>">
     <h4 class="form-signin-heading">Brighten flowers & fruits <br/><br/><b>Sign in</b></h4>
     <label for="inputEmail" class="sr-only">Email address</label>
     <input type="email" id="inputEmail" name = "email" class="form-control" placeholder="Email address" required>
